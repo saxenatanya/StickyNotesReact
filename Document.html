@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<!-- saved from url=(0538)https://docs-secure-cdn.fresco.me/system/attachments/files/022/672/903/original/33b2a51d89ad3add63b69066e2da9fd2dfbc932d/index.html?Expires=1620290003&Signature=kKbOsimjaeW~8bjSVTz0yWrrWFMLWIZy8aVvFbw7eOTdhOsP-N2ydCtUnDtOpGZOpIFGcUYxGBIeur7zqXZQO~zI~HsJkCm1YBe7MGk3gfgaDPV2ngsg95dGIpZkjKx7hvNrlqqddZxKNeSYikatCZ8fvpuPbBdll5BKH2N4qJSNL4HRAMr9fJCWmIX2tLox7IxeXDcalOUZ5Is9j536KOwiJ1zLk7db7qUASzTlaQyPLPsz2zbZebqv0Kp7uax7AJtt4SPMv1eqX5sFFh9XMFs89i2FOwVspPrKT8w7dqjpbbfhy3Wt9NAcgU9ITBr-sxHNumnZ9M5hEUZPlUWHYQ__&Key-Pair-Id=APKAJUTRVJCFRZY3Z43A -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Load Babel -->
+    <!-- v6 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+    <script src="./Document_files/babel.min.js.download"></script>
+    <script crossorigin="" src="./Document_files/react.development.js.download"></script>
+    <script crossorigin="" src="./Document_files/react-dom.development.js.download"></script>
+    <script src="./Document_files/react-draggable.min.js.download"></script>
+
+    <style>
+        body{
+            margin: 0px;
+            padding: 15px;
+        }
+        .note{
+            width: 250px;
+            height: 150px;
+            background-color: yellow;
+            padding: 15px;
+            border: 1px solid orange;
+            box-shadow: 2px 6px 12px rgba(0,0,0,0.2);
+            position: absolute;
+        }
+        textarea {
+            width: 96%;
+            height: 115px;
+        }
+        .board{
+            background-color: #bfd8d8;
+            position: fixed;
+            left: 0px;
+            right: 0px;
+            top: 0px;
+            bottom: 0px;
+        }
+    </style>
+<script>"use strict";
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Note = /*#__PURE__*/function (_React$Component) {
+  _inherits(Note, _React$Component);
+
+  var _super = _createSuper(Note);
+
+  function Note(props) {
+    var _this;
+
+    _classCallCheck(this, Note);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "componentWillMount", function () {
+      _this.style = {
+        right: _this.randomBetween(0, window.innerWidth - 150, 'px'),
+        top: _this.randomBetween(0, window.innerHeight - 150, 'px')
+      };
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "randomBetween", function (x, y, s) {
+      return x + Math.ceil(Math.random() * (y - x)) + s;
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "edit", function () {
+      _this.setState({
+        editing: true
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "save", function () {
+      _this.props.onChange(_this.refs.newText.value, _this.props.id);
+
+      _this.setState({
+        editing: false
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "delete", function (id) {
+      _this.props.onRemove(_this.props.id);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "renderForm", function () {
+      return /*#__PURE__*/React.createElement("div", {
+        className: "note",
+        style: _this.style
+      }, /*#__PURE__*/React.createElement("textarea", {
+        ref: "newText"
+      }), /*#__PURE__*/React.createElement("button", {
+        onClick: _this.save
+      }, "Save"));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "renderDisplay", function () {
+      return /*#__PURE__*/React.createElement("div", {
+        className: "note",
+        style: _this.style
+      }, /*#__PURE__*/React.createElement("p", null, _this.props.children), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("button", {
+        onClick: _this.edit
+      }, "Edit"), /*#__PURE__*/React.createElement("button", {
+        onClick: _this["delete"]
+      }, "X")));
+    });
+
+    _this.state = {
+      editing: false
+    };
+    return _this;
+  }
+
+  _createClass(Note, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React.createElement(ReactDraggable, null, this.state.editing ? this.renderForm() : this.renderDisplay());
+    }
+  }]);
+
+  return Note;
+}(React.Component);
+
+ReactDOM.render( /*#__PURE__*/React.createElement(Note, null, "Hello World!"), document.getElementById('react-container'));
+
+var Board = /*#__PURE__*/function (_React$Component2) {
+  _inherits(Board, _React$Component2);
+
+  var _super2 = _createSuper(Board);
+
+  function Board(props) {
+    var _this2;
+
+    _classCallCheck(this, Board);
+
+    _this2 = _super2.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this2), "nextId", function () {
+      _this2.uniqueId = _this2.uniqueId || 0;
+      return _this2.uniqueId++;
+    });
+
+    _defineProperty(_assertThisInitialized(_this2), "add", function (text) {
+      var notes = [].concat(_toConsumableArray(_this2.state.notes), [{
+        id: _this2.nextId(),
+        note: text
+      }]);
+
+      _this2.setState({
+        notes: notes
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this2), "update", function (newText, id) {
+      var notes = _this2.state.notes.map(function (note) {
+        return note.id !== id ? note : _objectSpread(_objectSpread({}, note), {}, {
+          note: newText
+        });
+      });
+
+      _this2.setState({
+        notes: notes
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this2), "remove", function (id) {
+      var notes = _this2.state.notes.filter(function (note) {
+        return note.id !== id;
+      });
+
+      _this2.setState({
+        notes: notes
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this2), "eachNote", function (note) {
+      return /*#__PURE__*/React.createElement(Note, {
+        key: note.id,
+        id: note.id,
+        onChange: _this2.update,
+        onRemove: _this2.remove
+      }, note.note);
+    });
+
+    _this2.state = {
+      notes: []
+    };
+    return _this2;
+  }
+
+  _createClass(Board, [{
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return /*#__PURE__*/React.createElement("div", {
+        className: "board"
+      }, this.state.notes.map(this.eachNote), /*#__PURE__*/React.createElement("button", {
+        onClick: function onClick() {
+          return _this3.add();
+        }
+      }, "+"));
+    }
+  }]);
+
+  return Board;
+}(React.Component);
+
+ReactDOM.render( /*#__PURE__*/React.createElement(Board, {
+  count: 10
+}), document.getElementById('react-container'));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIklubGluZSBCYWJlbCBzY3JpcHQiXSwibmFtZXMiOlsiTm90ZSIsInByb3BzIiwic3R5bGUiLCJyaWdodCIsInJhbmRvbUJldHdlZW4iLCJ3aW5kb3ciLCJpbm5lcldpZHRoIiwidG9wIiwiaW5uZXJIZWlnaHQiLCJ4IiwieSIsInMiLCJNYXRoIiwiY2VpbCIsInJhbmRvbSIsInNldFN0YXRlIiwiZWRpdGluZyIsIm9uQ2hhbmdlIiwicmVmcyIsIm5ld1RleHQiLCJ2YWx1ZSIsImlkIiwib25SZW1vdmUiLCJzYXZlIiwiY2hpbGRyZW4iLCJlZGl0Iiwic3RhdGUiLCJyZW5kZXJGb3JtIiwicmVuZGVyRGlzcGxheSIsIlJlYWN0IiwiQ29tcG9uZW50IiwiUmVhY3RET00iLCJyZW5kZXIiLCJkb2N1bWVudCIsImdldEVsZW1lbnRCeUlkIiwiQm9hcmQiLCJ1bmlxdWVJZCIsInRleHQiLCJub3RlcyIsIm5leHRJZCIsIm5vdGUiLCJtYXAiLCJmaWx0ZXIiLCJ1cGRhdGUiLCJyZW1vdmUiLCJlYWNoTm90ZSIsImFkZCJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0lBRU1BLEk7Ozs7O0FBRUYsZ0JBQWFDLEtBQWIsRUFBbUI7QUFBQTs7QUFBQTs7QUFDZiw4QkFBTUEsS0FBTjs7QUFEZSx5RUFPRSxZQUFNO0FBQ3ZCLFlBQUtDLEtBQUwsR0FBYTtBQUNUQyxRQUFBQSxLQUFLLEVBQUUsTUFBS0MsYUFBTCxDQUFvQixDQUFwQixFQUF1QkMsTUFBTSxDQUFDQyxVQUFQLEdBQW9CLEdBQTNDLEVBQWdELElBQWhELENBREU7QUFFVEMsUUFBQUEsR0FBRyxFQUFFLE1BQUtILGFBQUwsQ0FBb0IsQ0FBcEIsRUFBdUJDLE1BQU0sQ0FBQ0csV0FBUCxHQUFxQixHQUE1QyxFQUFpRCxJQUFqRDtBQUZJLE9BQWI7QUFJSCxLQVprQjs7QUFBQSxvRUFjSCxVQUFFQyxDQUFGLEVBQUtDLENBQUwsRUFBUUMsQ0FBUixFQUFl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QUFBLEtBQUssRUFBRTtBQUFkLEVBQWpCLEVBQTZDQyxRQUFRLENBQUNDLGNBQVQsQ0FBeUIsaUJBQXpCLENBQTdDIiwic291cmNlc0NvbnRlbnQiOlsiXG5cbmNsYXNzIE5vdGUgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQge1xuXG4gICAgY29uc3RydWN0b3IgKHByb3BzKXtcbiAgICAgICAgc3VwZXIocHJvcHMpO1xuICAgICAgICB0aGlzLnN0YXRlID0ge1xuICAgICAgICAgICAgZWRpdGluZzogZmFsc2VcbiAgICAgICAgfVxuICAgIH1cblxuICAgIGNvbXBvbmVudFdpbGxNb3VudCA9ICgpID0+IHtcbiAgICAgICAgdGhpcy5zdHlsZSA9IHtcbiAgICAgICAgICAgIHJpZ2h0OiB0aGlzLnJhbmRvbUJldHdlZW4oIDAsIHdpbmRvdy5pbm5lcldpZHRoIC0gMTUwLCAncHgnICksXG4gICAgICAgICAgICB0b3A6IHRoaXMucmFuZG9tQmV0d2VlbiggMCwgd2luZG93LmlubmVySGVpZ2h0IC0gMTUwLCAncHgnIClcbiAgICAgICAgfVxuICAgIH1cblxuICAgIHJhbmRvbUJldHdlZW4gPSAoIHgsIHksIHMgKSA9PiB7XG4gICAgICAgIHJldHVybiggeCArIE1hdGguY2VpbChNYXRoLnJhbmRvbSgpICogKHkteCkpICkgKyBzXG4gICAgfVxuXG4gICAgZWRpdCA9ICgpID0+IHtcbiAgICAgICAgdGhpcy5zZXRTdGF0ZSh7IGVkaXRpbmc6IHRydWUgfSlcbiAgICB9XG5cbiAgICBzYXZlID0gKCkgPT4ge1xuICAgICAgICB0aGlzLnByb3BzLm9uQ2hhbmdlKHRoaXMucmVmcy5uZXdUZXh0LnZhbHVlLCB0aGlzLnByb3BzLmlkKVxuICAgICAgICB0aGlzLnNldFN0YXRlKHtlZGl0aW5nOiBmYWxzZX0pXG4gICAgfVxuXG4gICAgZGVsZXRlID0gKCBpZCApID0+IHtcbiAgICAgICAgdGhpcy5wcm9wcy5vblJlbW92ZSh0aGlzLnByb3BzLmlkKVxuICAgIH1cblxuICAgIHJlbmRlckZvcm0gPSAoKSA9PiB7XG4gICAgICAgIHJldHVybihcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibm90ZVwiIHN0eWxlPXt0aGlzLnN0eWxlfT5cbiAgICAgICAgICAgICAgICA8dGV4dGFyZWEgcmVmPVwibmV3VGV4dFwiPjwvdGV4dGFyZWE+ICAgIFxuICAgICAgICAgICAgICAgIDxidXR0b24gb25DbGljaz17dGhpcy5zYXZlfT5TYXZlPC9idXR0b24+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgKVxuICAgIH1cblxuICAgIHJlbmRlckRpc3BsYXkgPSAoKSA9PiB7XG4gICAgICAgIHJldHVybihcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibm90ZVwiIHN0eWxlPXt0aGlzLnN0eWxlfT5cbiAgICAgICAgICAgICAgICA8cD57dGhpcy5wcm9wcy5jaGlsZHJlbn08L3A+XG4gICAgICAgICAgICAgICAgPHNwYW4+XG4gICAgICAgICAgICAgICAgICAgIDxidXR0b24gb25DbGljaz17dGhpcy5lZGl0fT5FZGl0PC9idXR0b24+ICAgIFxuICAgICAgICAgICAgICAgICAgICA8YnV0dG9uIG9uQ2xpY2s9e3RoaXMuZGVsZXRlfT5YPC9idXR0b24+ICAgIFxuICAgICAgICAgICAgICAgIDwvc3Bhbj5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICApXG4gICAgfVxuXG4gICAgcmVuZGVyKCkge1xuXG4gICAgICAgIHJldHVybiAoIDxSZWFjdERyYWdnYWJsZT57XG4gICAgICAgICAgICAodGhpcy5zdGF0ZS5lZGl0aW5nICkgPyB0aGlzLnJlbmRlckZvcm0oKSA6IHRoaXMucmVuZGVyRGlzcGxheSgpXG4gICAgICAgIH08L1JlYWN0RHJhZ2dhYmxlPilcblxuICAgIH1cblxufVxuXG5SZWFjdERPTS5yZW5kZXIoIDxOb3RlPkhlbGxvIFdvcmxkITwvTm90ZT4sIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCAncmVhY3QtY29udGFpbmVyJyApIClcblxuY2xhc3MgQm9hcmQgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQge1xuXG4gICAgY29uc3RydWN0b3IocHJvcHMpe1xuICAgICAgICBzdXBlcihwcm9wcyk7XG4gICAgICAgIHRoaXMuc3RhdGUgPSB7XG4gICAgICAgICAgICBub3RlczogW11cbiAgICAgICAgfVxuICAgIH1cblxuICAgIG5leHRJZCA9ICgpID0+IHtcbiAgICAgICAgdGhpcy51bmlxdWVJZCA9IHRoaXMudW5pcXVlSWQgfHwgMFxuICAgICAgICByZXR1cm4gdGhpcy51bmlxdWVJZCsrXG4gICAgfVxuXG4gICAgYWRkID0gKHRleHQpID0+IHtcbiAgICAgICAgdmFyIG5vdGVzID0gW1xuICAgICAgICAgICAgLi4udGhpcy5zdGF0ZS5ub3RlcyxcbiAgICAgICAgICAgIHtcbiAgICAgICAgICAgICAgICBpZDogdGhpcy5uZXh0SWQoKSxcbiAgICAgICAgICAgICAgICBub3RlOiB0ZXh0XG4gICAgICAgICAgICB9XG4gICAgICAgIF1cbiAgICAgICAgdGhpcy5zZXRTdGF0ZSh7bm90ZXN9KVxuICAgIH1cblxuXG4gICAgdXBkYXRlID0gKCBuZXdUZXh0LCBpZCApID0+IHtcbiAgICAgICAgdmFyIG5vdGVzID0gdGhpcy5zdGF0ZS5ub3Rlcy5tYXAoXG4gICAgICAgICAgICBub3RlID0+ICggbm90ZS5pZCAhPT0gaWQgKSA/XG4gICAgICAgICAgICAgICAgbm90ZTogXG4gICAgICAgICAgICAgICAge1xuICAgICAgICAgICAgICAgICAgICAuLi5ub3RlLFxuICAgICAgICAgICAgICAgICAgICBub3RlOiBuZXdUZXh0XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICApXG4gICAgICAgIHRoaXMuc2V0U3RhdGUoe25vdGVzfSlcbiAgICB9XG5cbiAgICByZW1vdmUgPSAoIGlkICkgPT4ge1xuICAgICAgICB2YXIgbm90ZXMgPSB0aGlzLnN0YXRlLm5vdGVzLmZpbHRlcihub3RlID0+IG5vdGUuaWQgIT09IGlkKVxuICAgICAgICB0aGlzLnNldFN0YXRlKHtub3Rlc30pXG4gICAgfVxuXG4gICAgZWFjaE5vdGUgPSAoIG5vdGUgKSA9PiB7XG4gICAgICAgIHJldHVybiAoPE5vdGUga2V5PXtub3RlLmlkfVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlkID0ge25vdGUuaWR9XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgb25DaGFuZ2U9e3RoaXMudXBkYXRlfVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9uUmVtb3ZlPXt0aGlzLnJlbW92ZX0+e25vdGUubm90ZX08L05vdGU+KVxuICAgIH1cblxuICAgIHJlbmRlcigpe1xuICAgICAgICByZXR1cm4oXG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJib2FyZFwiPlxuICAgICAgICAgICAgICAgICAgICB7dGhpcy5zdGF0ZS5ub3Rlcy5tYXAodGhpcy5lYWNoTm90ZSl9ICAgIFxuICAgICAgICAgICAgICAgICAgICA8YnV0dG9uIG9uQ2xpY2s9eygpID0+IHRoaXMuYWRkKCl9Pis8L2J1dHRvbj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgKVxuICAgIH1cbn1cblxuUmVhY3RET00ucmVuZGVyKCA8Qm9hcmQgY291bnQ9ezEwfT48L0JvYXJkPiwgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoICdyZWFjdC1jb250YWluZXInICkgKVxuXG4iXX0=</script><style type="text/css" id="react-draggable-style-el">.react-draggable-transparent-selection *::-moz-selection {all: inherit;}
+.react-draggable-transparent-selection *::selection {all: inherit;}
+</style></head>
+<body class="">
+
+<div id="react-container"><div class="board"><div class="note react-draggable react-draggable-dragged" style="right: 359px; top: 101px; transform: translate(0px, 0px);"><p>strfkudyqf</p><span><button>Edit</button><button>X</button></span></div><button>+</button></div></div>
+
+<script type="text/babel">
+
+class Note extends React.Component {
+
+    constructor (props){
+        super(props);
+        this.state = {
+            editing: false
+        }
+    }
+
+    componentWillMount = () => {
+        this.style = {
+            right: this.randomBetween( 0, window.innerWidth - 150, 'px' ),
+            top: this.randomBetween( 0, window.innerHeight - 150, 'px' )
+        }
+    }
+
+    randomBetween = ( x, y, s ) => {
+        return( x + Math.ceil(Math.random() * (y-x)) ) + s
+    }
+
+    edit = () => {
+        this.setState({ editing: true })
+    }
+
+    save = () => {
+        this.props.onChange(this.refs.newText.value, this.props.id)
+        this.setState({editing: false})
+    }
+
+    delete = ( id ) => {
+        this.props.onRemove(this.props.id)
+    }
+
+    renderForm = () => {
+        return(
+            <div className="note" style={this.style}>
+                <textarea ref="newText"></textarea>    
+                <button onClick={this.save}>Save</button>
+            </div>
+        )
+    }
+
+    renderDisplay = () => {
+        return(
+            <div className="note" style={this.style}>
+                <p>{this.props.children}</p>
+                <span>
+                    <button onClick={this.edit}>Edit</button>    
+                    <button onClick={this.delete}>X</button>    
+                </span>
+            </div>
+        )
+    }
+
+    render() {
+
+        return ( <ReactDraggable>{
+            (this.state.editing ) ? this.renderForm() : this.renderDisplay()
+        }</ReactDraggable>)
+
+    }
+
+}
+
+ReactDOM.render( <Note>Hello World!</Note>, document.getElementById( 'react-container' ) )
+
+class Board extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            notes: []
+        }
+    }
+
+    nextId = () => {
+        this.uniqueId = this.uniqueId || 0
+        return this.uniqueId++
+    }
+
+    add = (text) => {
+        var notes = [
+            ...this.state.notes,
+            {
+                id: this.nextId(),
+                note: text
+            }
+        ]
+        this.setState({notes})
+    }
+
+
+    update = ( newText, id ) => {
+        var notes = this.state.notes.map(
+            note => ( note.id !== id ) ?
+                note: 
+                {
+                    ...note,
+                    note: newText
+                }
+        )
+        this.setState({notes})
+    }
+
+    remove = ( id ) => {
+        var notes = this.state.notes.filter(note => note.id !== id)
+        this.setState({notes})
+    }
+
+    eachNote = ( note ) => {
+        return (<Note key={note.id}
+                            id = {note.id}
+                            onChange={this.update}
+                            onRemove={this.remove}>{note.note}</Note>)
+    }
+
+    render(){
+        return(
+                <div className="board">
+                    {this.state.notes.map(this.eachNote)}    
+                    <button onClick={() => this.add()}>+</button>
+                </div>
+        )
+    }
+}
+
+ReactDOM.render( <Board count={10}></Board>, document.getElementById( 'react-container' ) )
+
+</script>
+    
+
+</body></html>
